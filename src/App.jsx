@@ -11,7 +11,7 @@ function App() {
     let tmp = undefined
     while (1){
       tmp = TaskList.at(Math.floor(Math.random() * TaskList.length));
-      if( tmp.feladat !== lastfeladat.feladat && tmp.feladat !== feladat.feladat) break;
+      if( tmp.feladat !== lastfeladat.feladat) break;
     } 
     lastfeladat = feladat
     setFeladat(tmp)
