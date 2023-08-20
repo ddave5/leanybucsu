@@ -6,8 +6,8 @@ import {motion} from 'framer-motion';
 
 function App() {
 
-  const [task, setTask] = useState({});
-  let prevTask = "";
+  let task = {}
+  let prevTask = {};
 
   const lottery = () => {
     let tmp = undefined;
@@ -15,8 +15,8 @@ function App() {
       tmp = TaskList.at(Math.floor(Math.random() * TaskList.length));
       if( tmp.feladat !== prevTask.feladat) break;
     } 
-    prevTask = task
-    setTask(tmp)
+    prevTask = task;
+    task = tmp;
   }
 
   const fadeIn = () => {
@@ -48,21 +48,19 @@ function App() {
       <h1>Leánybúcsú</h1>
       <div className='gombDiv'>
         <div className='gomb__container'>
-          <button onClick={fadeIn}> {task === undefined ? 'Pörgetés' : 'Újrapörgetés' }</button>
+          <button onClick={fadeIn}>Pörgetés</button>
           <button onClick={openModal} className='infoButton'>i</button>
         </div>
       </div>
       
-      { task !== undefined && (
-        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
-          <div className='titleDiv'>
-            <h2 id="taskTitle"></h2>
-          </div> 
-          <div className='feladatDiv'>
-            <p id="taskDesc"></p>
-          </div>
-        </motion.div>
-      )}
+      <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+        <div className='titleDiv'>
+          <h2 id="taskTitle"></h2>
+        </div> 
+        <div className='feladatDiv'>
+          <p id="taskDesc"></p>
+        </div>
+      </motion.div>
       <Footer/>
 
       <div id="modal" className='modal'>
